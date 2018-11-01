@@ -1,0 +1,11 @@
+{
+  "name": "hyperapp-style",
+  "version": "0.1.0",
+  "main": "src/index.js",
+  "repository": "git@github.com:ghivert/hyperapp-style.git",
+  "author": "Guillaume Hivert <guillaume.hivert@outlook.com>",
+  "license": "MIT",
+  "dependencies": {
+    "hyperapp": "^1.2.9"
+  }
+}
