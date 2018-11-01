@@ -5,17 +5,11 @@ let cache = new Set()
 
 function setCorrectStylesheet() {
   if (!stylesheet) {
-    const node = document.getElementById('main-stylesheet')
-    if (node) {
+    const head = document.getElementsByTagName('head')[0]
+    if (head) {
+      const stylesheet = document.createElement('style')
+      head.appendChild(stylesheet)
       stylesheet = node.sheet
-    } else {
-      const head = document.getElementsByTagName('head')[0]
-      if (head) {
-        const stylesheet = document.createElement('style')
-        stylesheet.id = 'main-stylesheet'
-        head.appendChild(stylesheet)
-        stylesheet = node.sheet
-      }
     }
   }
 }
