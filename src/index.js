@@ -145,13 +145,19 @@ function getMediaQueryClassName(content, medias) {
     .keys(content)
     .map(key => {
       switch (key) {
-        case "widths": {
-          return content.width.map(computeMediasWidth(medias)).reduce((acc, value) => acc.concat(value))
-        }
+        case "widths":
+          return content.widths
+            .map(computeMediasWidth(medias))
+            .reduce((acc, value) => acc.concat(value))
         case "screen":
           return getMediaQueryClassName(
             content.screen,
             cloneMedias(medias, { devices: [ 'screen' ] })
+          )
+        case "mobile":
+          return getMediaQueryClassName(
+            content.mobile,
+            cloneMedias(medias, { devices: [ 'mobile' ] })
           )
         default: return computeSuffixOrBasicStyle(key, content, medias)
       }
@@ -161,9 +167,8 @@ function getMediaQueryClassName(content, medias) {
 
 function getClassNamesFromStyles(styles) {
   const media = styles.media
-  if (media) {
-    delete styles.media
-  }
+  console.log(styles)
+  if (media) { delete styles.media }
   return getMediaQueryClassName(styles, {})
 }
 
