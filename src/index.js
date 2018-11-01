@@ -8,6 +8,14 @@ function setCorrectStylesheet() {
     const node = document.getElementById('main-stylesheet')
     if (node) {
       stylesheet = node.sheet
+    } else {
+      const head = document.getElementsByTagName('head')[0]
+      if (head) {
+        const stylesheet = document.createElement('style')
+        stylesheet.id = 'main-stylesheet'
+        head.appendChild(stylesheet)
+        stylesheet = node.sheet
+      }
     }
   }
 }
