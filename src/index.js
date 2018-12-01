@@ -7,9 +7,9 @@ function setCorrectStylesheet() {
   if (!stylesheet) {
     const head = document.getElementsByTagName('head')[0]
     if (head) {
-      const stylesheet = document.createElement('style')
-      head.appendChild(stylesheet)
-      stylesheet = node.sheet
+      const stylesheet_ = document.createElement('style')
+      head.appendChild(stylesheet_)
+      stylesheet = stylesheet_.sheet
     }
   }
 }
