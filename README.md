@@ -144,6 +144,26 @@ app(state, actions, view, document.getElementById('app'))
 
 To be precise on media queries, they are applied in order of importance, accordingly to the style object, from top to bottom. The last style applied on element will be the last style in the array.
 
+## Using style in functions
+
+When you're using JSX, you can use lowercased words, like `div`, and capitalized words, like `NavBar` in your tags. According to the case, it will not search and render things in the same way. In the first case, it will generate a corresponding HTML element. In the other case, it will render what you want by calling the corresponding function. In this case, you maybe want to access the `style` property in the function? Well, you can! Just use `props.style` and you're good!
+
+An example to help you understand.
+
+```jsx
+const Flex = (props, children) => (
+  <div style={{ ...props.style, display: 'flex' }}>{children}</div>
+)
+
+const App = (state, actions) => (
+  <Flex style={{ padding: '12px' }}
+    Here's my content!
+  </Flex>
+)
+```
+
+In this case, the styles are not computed right now, and you're free to use them in your functions to combine them, or whatever you want!
+
 # Final words
 
 If you went through all of this, you're ready to use Hyperapp Style in all your Hyperapp apps!
