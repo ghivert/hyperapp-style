@@ -161,7 +161,6 @@ function getMediaQueryClassName(content, medias) {
 
 function getClassNamesFromStyles(styles) {
   const media = styles.media
-  console.log(styles)
   if (media) { delete styles.media }
   return getMediaQueryClassName(styles, {})
 }
