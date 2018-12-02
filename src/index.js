@@ -176,19 +176,23 @@ function selectCorrectClassNames(classes, classNames) {
 
 export default function h(tag, attributes, ...children) {
   setCorrectStylesheet()
-  if (attributes) {
-    const styles = attributes.style
-    if (styles) {
-      const classNames = getClassNamesFromStyles(styles)
-      const classes = attributes.className || ''
-      attributes.className = selectCorrectClassNames(classes, classNames)
+  if (typeof tag === 'function') {
+    return render(tag, attributes, children)
+  } else {
+    if (attributes) {
+      const styles = attributes.style
+      if (styles) {
+        const classNames = getClassNamesFromStyles(styles)
+        const classes = attributes.className || ''
+        attributes.className = selectCorrectClassNames(classes, classNames)
+      }
+      if (attributes.inline) {
+        attributes.style = attributes.inline
+        delete attributes.inline
+      } else if (styles) {
+        delete attributes.style
+      }
     }
-    if (attributes.inline) {
-      attributes.style = attributes.inline
-      delete attributes.inline
-    } else if (styles) {
-      delete attributes.style
-    }
+    return render(tag, attributes, children)
   }
-  return render(tag, attributes, children)
 }
